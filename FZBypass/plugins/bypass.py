@@ -1,14 +1,14 @@
 from time import time
 from asyncio import create_task, gather, sleep as asleep
-from pyrogram.filters import command, user
-from pyrogram.types import (
+from wzgram.filters import command, user
+from wzgram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
     InlineQueryResultArticle,
     InputTextMessageContent,
 )
-from pyrogram.enums import MessageEntityType
-from pyrogram.errors import QueryIdInvalid
+from wzgram.enums import MessageEntityType
+from wzgram.errors import QueryIdInvalid
 
 from FZBypass import Config, Bypass, BOT_START
 from FZBypass.core.bypass_checker import direct_link_checker, is_excep_link
@@ -25,7 +25,6 @@ async def start_msg(client, message):
     <i><b>Bot Started {convert_time(time() - BOT_START)} ago...</b></i>
 
 🛃 <b>Use Me Here :</b> @CyberPunkGrp <i>(Bypass Topic)</i>""",
-        quote=True,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -120,7 +119,7 @@ async def bypass_check(client, message):
 
 @Bypass.on_message(command("log") & user(Config.OWNER_ID))
 async def send_logs(client, message):
-    await message.reply_document("log.txt", quote=True)
+    await message.reply_document("log.txt")
 
 
 @Bypass.on_inline_query()

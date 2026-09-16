@@ -1,6 +1,6 @@
 from FZBypass import Bypass, LOGGER, Config
-from pyrogram import idle
-from pyrogram.filters import command, user
+from wzgram import idle
+from wzgram.filters import command, user
 from os import path as ospath, execl
 from asyncio import create_subprocess_exec
 from sys import executable
@@ -18,7 +18,7 @@ async def restart(client, message):
         execl(executable, executable, "-m", "FZBypassBot/FZBypass")
 
 
-async def restart():
+async def notify_restart():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
@@ -30,8 +30,12 @@ async def restart():
             LOGGER.error(e)
 
 
-Bypass.start()
-LOGGER.info("FZ Bot Started!")
-Bypass.loop.run_until_complete(restart())
-idle()
-Bypass.stop()
+async def main():
+    await Bypass.start()
+    LOGGER.info("FZ Bot Started!")
+    await notify_restart()
+    await idle()
+    await Bypass.stop()
+
+
+Bypass.loop.run_until_complete(main())

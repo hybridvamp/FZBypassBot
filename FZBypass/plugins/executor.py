@@ -6,7 +6,7 @@ from re import match
 from contextlib import redirect_stdout, suppress
 from asyncio.subprocess import PIPE
 from asyncio import create_subprocess_shell
-from pyrogram.filters import command, user
+from wzgram.filters import command, user
 from FZBypass import Config, Bypass, LOGGER
 
 

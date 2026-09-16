@@ -1,8 +1,8 @@
 from os import getenv
 from time import time
 from dotenv import load_dotenv
-from pyrogram import Client
-from pyrogram.enums import ParseMode
+from wzgram import Client
+from wzgram.enums import ParseMode
 from logging import getLogger, FileHandler, StreamHandler, INFO, ERROR, basicConfig
 from uvloop import install
 

@@ -1,5 +1,5 @@
-from pyrogram.filters import create
-from pyrogram.enums import MessageEntityType
+from wzgram.filters import create
+from wzgram.enums import MessageEntityType
 from re import search, match
 from requests import get as rget
 from urllib.parse import urlparse, parse_qs
@@ -13,8 +13,7 @@ async def auth_topic(_, __, message):
             if (
                 int(chat_id) == message.chat.id
                 and message.is_topic_message
-                and message.topics
-                and message.topics.id == int(topic_id)
+                and message.message_thread_id == int(topic_id)
             ):
                 return True
         elif int(chat) == message.chat.id:
