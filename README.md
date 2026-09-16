@@ -19,7 +19,7 @@
 - _Use in Google Collab for Demo_
   > **Downside:** Multi Thread Bypass Not Supported
 
-<a target="_blank" href="https://colab.research.google.com/github/SilentDemonSD/FZBypassBot/blob/main/FZNotebook/fzbypasser.ipynb">
+<a target="_blank" href="https://colab.research.google.com/github/rjriajul/FZBypassBot/blob/main/FZNotebook/fzbypasser.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
@@ -176,14 +176,14 @@
 1. `Heroku` or `Koyeb` or `Render` or `Scalingo` or _**More**_ _(Recommended)_
     - Use [pyTele-Loader](https://github.com/SilentDemonSD/pyTele-Loader) and Follow further Steps.
     - **Variables Values:**
-      - `REPO_URL`: https://github.com/SilentDemonSD/FZBypassBot
+      - `REPO_URL`: https://github.com/rjriajul/FZBypassBot
       - `REPO_BRANCH`: main
       - `START_CMD`: bash start.sh
 2. `VPS`
     - **Build And Run The Docker Image Using Official Docker Commands**
         - _Clone the Repository_
             ```
-            git clone https://github.com/SilentDemonSD/FZBypassBot && cd FZBypassBot
+            git clone https://github.com/rjriajul/FZBypassBot && cd FZBypassBot
             ```
         - _Build Docker image:_
             ```
@@ -229,7 +229,7 @@
 - `TERA_COOKIE`: Get the Terabox `ndus` Cookie from Cookie Editor Extension.
 - `LARAVEL_SESSION`: Get from `sharer.pw` Cookie for Login base.
 - `XSRF_TOKEN`: Get from `sharer.pw` Cookie for Login base.
-- `UPSTREAM_REPO`: Put Upstream Repo to Update. Defaults to `https://github.com/SilentDemonSD/FZBypassBot`
+- `UPSTREAM_REPO`: Put Upstream Repo to Update. Defaults to `https://github.com/rjriajul/FZBypassBot`
 - `UPSTREAM_BRANCH`: Put Branch Name. Defaults to `main`
 
 ---

@@ -21,7 +21,7 @@ basicConfig(
 )
 load_dotenv("config.env", override=True)
 
-UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/SilentDemonSD/FZBypassBot")
+UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/rjriajul/FZBypassBot")
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 
 if UPSTREAM_REPO is not None:
@@ -31,8 +31,8 @@ if UPSTREAM_REPO is not None:
     update = srun(
         [
             f"git init -q \
-                     && git config --global user.email drxxstrange@gmail.com \
-                     && git config --global user.name SilentDemonSD \
+                     && git config --global user.email 93116400+rjriajul@users.noreply.github.com \
+                     && git config --global user.name rjriajul \
                      && git add . \
                      && git commit -sm update -q \
                      && git remote add origin {UPSTREAM_REPO} \
