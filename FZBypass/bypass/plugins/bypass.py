@@ -1,6 +1,6 @@
 from time import time
 from asyncio import create_task, gather, sleep as asleep
-from wzgram.filters import command, user
+from wzgram.filters import user
 from wzgram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -10,34 +10,9 @@ from wzgram.types import (
 from wzgram.enums import MessageEntityType
 from wzgram.errors import QueryIdInvalid
 
-from FZBypass import Config, Bypass, BOT_START
+from FZBypass import Config, Bypass
 from FZBypass.bypass.utils.bypass_checker import direct_link_checker, is_excep_link
 from FZBypass.core.bot_utils import AuthChatsTopics, convert_time, BypassFilter
-from FZBypass.core.commands import BotCommands
-
-
-@Bypass.on_message(command(BotCommands.StartCommand))
-async def start_msg(client, message):
-    await message.reply(
-        f"""<b><i>FZ Bypass Bot!</i></b>
-    
-    <i>A Powerful Elegant Multi Threaded Bot written in Python... which can Bypass Various Shortener Links, Scrape links, and More ... </i>
-    
-    <i><b>Bot Started {convert_time(time() - BOT_START)} ago...</b></i>
-
-🛃 <b>Use Me Here :</b> @CyberPunkGrp <i>(Bypass Topic)</i>""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("🎓 Dev", url="https://t.me/SilentDemonSD"),
-                    InlineKeyboardButton(
-                        "🔍 Deploy Own",
-                        url="https://github.com/rjriajul/FZBypassBot",
-                    ),
-                ]
-            ]
-        ),
-    )
 
 
 @Bypass.on_message(BypassFilter & (user(Config.OWNER_ID) | AuthChatsTopics))
