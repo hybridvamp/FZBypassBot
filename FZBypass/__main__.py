@@ -1,9 +1,34 @@
-from FZBypass import Bypass, LOGGER, Config
+from FZBypass import Bypass, LOGGER, Config, conf
 from wzgram import idle
 from wzgram.filters import command, user
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from os import path as ospath, execl
 from asyncio import create_subprocess_exec
 from sys import executable
+from threading import Thread
+
+
+class Health(BaseHTTPRequestHandler):
+    def _head(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain")
+        self.end_headers()
+
+    def do_HEAD(self):
+        self._head()
+
+    def do_GET(self):
+        self._head()
+        self.wfile.write(b"FZ Bypass Bot is alive")
+
+    def log_message(self, *args):
+        pass
+
+
+def serve_health():
+    port = int(conf("PORT", 8080))
+    LOGGER.info(f"Health server listening on port {port}")
+    ThreadingHTTPServer(("0.0.0.0", port), Health).serve_forever()
 
 
 @Bypass.on_message(command("restart") & user(Config.OWNER_ID))
@@ -31,6 +56,7 @@ async def notify_restart():
 
 
 async def main():
+    Thread(target=serve_health, daemon=True).start()
     await Bypass.start()
     LOGGER.info("FZ Bot Started!")
     await notify_restart()

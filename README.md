@@ -179,6 +179,7 @@
       - `REPO_URL`: https://github.com/rjriajul/FZBypassBot
       - `REPO_BRANCH`: main
       - `START_CMD`: bash start.sh
+    - _On `Render` or `Koyeb`, deploy as a **Web Service**. The bot serves a health page on `$PORT`, so the platform keeps it awake._
 2. `VPS`
     - **Build And Run The Docker Image Using Official Docker Commands**
         - _Clone the Repository_
@@ -230,6 +231,7 @@
   - Get Raw `Refresh Token` from [lavarel-google](https://github.com/ivanvermeyen/laravel-google-drive-demo/blob/master/README/2-getting-your-refresh-token.md)
 - `TERA_COOKIE`: Get the Terabox `ndus` Cookie from Cookie Editor Extension.
 - `LARAVEL_SESSION`: Get from `sharer.pw` Cookie for Login base.
+- `PORT`: Port for the health web server, default `8080`. `Render` & `Koyeb` set `$PORT` themselves, so leave it empty there.
 - `XSRF_TOKEN`: Get from `sharer.pw` Cookie for Login base.
 - `UPSTREAM_REPO`: Put Upstream Repo to Update. Defaults to `https://github.com/rjriajul/FZBypassBot`
 - `UPSTREAM_BRANCH`: Put Branch Name. Defaults to `main`

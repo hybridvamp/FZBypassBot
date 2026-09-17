@@ -17,6 +17,7 @@ HUBDRIVE_CRYPT = ""
 DRIVEFIRE_CRYPT = ""
 KATDRIVE_CRYPT = ""
 DIRECT_INDEX = ""
+PORT = 8080  # Health server port, Render / Koyeb override it via $PORT
 TERA_COOKIE = ""
 
 # Update
