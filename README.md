@@ -203,7 +203,7 @@
                 docker stop idxxxxx
                 ```
     - _Add `sudo` at the Start of Each Command if your CLI is rooted_
-    - _Add all Config Data in `config.env`_
+    - _Add all Config Data in `config.py`_
     - _Update your Repo Directly, Make sure to fill Up `UPSTREAM_REPO` & `UPSTREAM_BRANCH`_
         ```
         docker restart idxxxxx
@@ -212,6 +212,8 @@
 ---
 
 ## ***Config Setup***
+- _Copy `sample_config.py` to `config.py` in the repo root and fill it up._
+  > Values left empty in `config.py` fall back to environment variables, so Heroku / Koyeb / Render style deploys keep working without the file.
 - `BOT_TOKEN`: Telegram Bot Token that you got from BotFather.
 - `OWNER_ID`: Telegram User ID (not username) of the Owner of the bot.
 - `API_ID`: This is to authenticate your Telegram account for downloading Telegram files. You can get this from https://my.telegram.org.

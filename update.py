@@ -8,7 +8,6 @@ from logging import (
 )
 from logging.handlers import RotatingFileHandler
 from subprocess import run as srun
-from dotenv import load_dotenv
 
 basicConfig(
     level=INFO,
@@ -19,10 +18,18 @@ basicConfig(
         StreamHandler(),
     ],
 )
-load_dotenv("config.env", override=True)
 
-UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/rjriajul/FZBypassBot")
-UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
+try:
+    import config
+except ImportError:
+    config = None
+
+UPSTREAM_REPO = getattr(config, "UPSTREAM_REPO", None) or getenv(
+    "UPSTREAM_REPO", "https://github.com/rjriajul/FZBypassBot"
+)
+UPSTREAM_BRANCH = getattr(config, "UPSTREAM_BRANCH", None) or getenv(
+    "UPSTREAM_BRANCH", "main"
+)
 
 if UPSTREAM_REPO is not None:
     if opath.exists(".git"):

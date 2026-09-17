@@ -1,12 +1,15 @@
+# Copy this file to config.py in the repo root and fill it up.
+# Any value left empty here is read from the environment instead.
+
 # Required
 BOT_TOKEN = ""
 API_HASH = ""
 API_ID = ""
-AUTH_CHATS = "" # Separate multiple ids by space and : for topic_ids
+AUTH_CHATS = ""  # Separate multiple ids by space and : for topic_ids
 
 # Optional
-AUTO_BYPASS = ""
-OWNER_ID = "" # For personal use & Logs
+AUTO_BYPASS = False
+OWNER_ID = 0  # For personal use & Logs
 LARAVEL_SESSION = ""
 XSRF_TOKEN = ""
 GDTOT_CRYPT = ""

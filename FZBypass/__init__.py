@@ -1,6 +1,5 @@
 from os import getenv
 from time import time
-from dotenv import load_dotenv
 from wzgram import Client
 from wzgram.enums import ParseMode
 from logging import getLogger, FileHandler, StreamHandler, INFO, ERROR, basicConfig
@@ -17,28 +16,38 @@ basicConfig(
 getLogger("pyrogram").setLevel(ERROR)
 LOGGER = getLogger(__name__)
 
-load_dotenv("config.env", override=True)
+try:
+    import config
+except ImportError:
+    config = None
+
+
+def conf(key, default=""):
+    return getattr(config, key, None) or getenv(key, default)
+
+
 BOT_START = time()
 
 
 class Config:
-    BOT_TOKEN = getenv("BOT_TOKEN", "")
-    API_HASH = getenv("API_HASH", "")
-    API_ID = getenv("API_ID", "")
-    if BOT_TOKEN == "" or API_HASH == "" or API_ID == "":
+    BOT_TOKEN = conf("BOT_TOKEN")
+    API_HASH = conf("API_HASH")
+    API_ID = conf("API_ID")
+    if not BOT_TOKEN or not API_HASH or not API_ID:
         LOGGER.critical("Variables Missing. Exiting Now...")
         exit(1)
-    AUTO_BYPASS = getenv("AUTO_BYPASS", "False").lower() == "true"
-    AUTH_CHATS = getenv("AUTH_CHATS", "").split()
-    OWNER_ID = int(getenv("OWNER_ID", 0))
-    DIRECT_INDEX = getenv("DIRECT_INDEX", "").rstrip("/")
-    LARAVEL_SESSION = getenv("LARAVEL_SESSION", "")
-    XSRF_TOKEN = getenv("XSRF_TOKEN", "")
-    GDTOT_CRYPT = getenv("GDTOT_CRYPT", "")
-    DRIVEFIRE_CRYPT = getenv("DRIVEFIRE_CRYPT", "")
-    HUBDRIVE_CRYPT = getenv("HUBDRIVE_CRYPT", "")
-    KATDRIVE_CRYPT = getenv("KATDRIVE_CRYPT", "")
-    TERA_COOKIE = getenv("TERA_COOKIE", "")
+    AUTO_BYPASS = str(conf("AUTO_BYPASS", "False")).lower() == "true"
+    _auth = conf("AUTH_CHATS")
+    AUTH_CHATS = _auth.split() if isinstance(_auth, str) else [str(c) for c in _auth]
+    OWNER_ID = int(conf("OWNER_ID", 0) or 0)
+    DIRECT_INDEX = conf("DIRECT_INDEX").rstrip("/")
+    LARAVEL_SESSION = conf("LARAVEL_SESSION")
+    XSRF_TOKEN = conf("XSRF_TOKEN")
+    GDTOT_CRYPT = conf("GDTOT_CRYPT")
+    DRIVEFIRE_CRYPT = conf("DRIVEFIRE_CRYPT")
+    HUBDRIVE_CRYPT = conf("HUBDRIVE_CRYPT")
+    KATDRIVE_CRYPT = conf("KATDRIVE_CRYPT")
+    TERA_COOKIE = conf("TERA_COOKIE")
 
 
 Bypass = Client(

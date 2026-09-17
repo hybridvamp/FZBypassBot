@@ -5,7 +5,6 @@ cloudscraper
 curl_cffi
 lxml
 httpx
-python-dotenv
 requests
 urllib3==1.26
 uvloop
