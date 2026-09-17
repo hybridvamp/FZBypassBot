@@ -13,9 +13,10 @@ from wzgram.errors import QueryIdInvalid
 from FZBypass import Config, Bypass, BOT_START
 from FZBypass.bypass.utils.bypass_checker import direct_link_checker, is_excep_link
 from FZBypass.core.bot_utils import AuthChatsTopics, convert_time, BypassFilter
+from FZBypass.core.commands import BotCommands
 
 
-@Bypass.on_message(command("start"))
+@Bypass.on_message(command(BotCommands.StartCommand))
 async def start_msg(client, message):
     await message.reply(
         f"""<b><i>FZ Bypass Bot!</i></b>
@@ -115,11 +116,6 @@ async def bypass_check(client, message):
         await wait_msg.edit(tg_txt, disable_web_page_preview=True)
     else:
         await wait_msg.delete()
-
-
-@Bypass.on_message(command("log") & user(Config.OWNER_ID))
-async def send_logs(client, message):
-    await message.reply_document("log.txt")
 
 
 @Bypass.on_inline_query()
