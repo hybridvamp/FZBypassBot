@@ -4,6 +4,7 @@ cfscrape
 cloudscraper
 curl_cffi
 lxml
+psutil
 httpx
 requests
 urllib3==1.26

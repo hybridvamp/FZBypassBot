@@ -85,3 +85,22 @@ def convert_time(seconds):
     if result == "":
         return "0ms"
     return result
+
+
+SIZE_UNITS = ["B", "KB", "MB", "GB", "TB", "PB"]
+
+
+def get_readable_size(size):
+    if not size:
+        return "0B"
+    i = 0
+    while size >= 1024 and i < len(SIZE_UNITS) - 1:
+        size /= 1024
+        i += 1
+    return f"{size:.2f}{SIZE_UNITS[i]}"
+
+
+def progress_bar(percent, slots=12):
+    percent = min(max(float(percent or 0), 0), 100)
+    filled = int(percent / 100 * slots)
+    return f"[{'■' * filled}{'□' * (slots - filled)}]"
