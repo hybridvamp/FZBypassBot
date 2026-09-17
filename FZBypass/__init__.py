@@ -33,13 +33,13 @@ class Config:
     BOT_TOKEN = conf("BOT_TOKEN")
     API_HASH = conf("API_HASH")
     API_ID = conf("API_ID")
-    if not BOT_TOKEN or not API_HASH or not API_ID:
+    OWNER_ID = int(conf("OWNER_ID", 0) or 0)
+    if not BOT_TOKEN or not API_HASH or not API_ID or not OWNER_ID:
         LOGGER.critical("Variables Missing. Exiting Now...")
         exit(1)
     AUTO_BYPASS = str(conf("AUTO_BYPASS", "False")).lower() == "true"
     _auth = conf("AUTH_CHATS")
     AUTH_CHATS = _auth.split() if isinstance(_auth, str) else [str(c) for c in _auth]
-    OWNER_ID = int(conf("OWNER_ID", 0) or 0)
     DIRECT_INDEX = conf("DIRECT_INDEX").rstrip("/")
     LARAVEL_SESSION = conf("LARAVEL_SESSION")
     XSRF_TOKEN = conf("XSRF_TOKEN")

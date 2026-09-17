@@ -6,10 +6,10 @@ BOT_TOKEN = ""
 API_HASH = ""
 API_ID = ""
 AUTH_CHATS = ""  # Separate multiple ids by space and : for topic_ids
+OWNER_ID = 0  # Telegram user id of the bot owner
 
 # Optional
 AUTO_BYPASS = False
-OWNER_ID = 0  # For personal use & Logs
 LARAVEL_SESSION = ""
 XSRF_TOKEN = ""
 GDTOT_CRYPT = ""
