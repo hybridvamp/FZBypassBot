@@ -10,6 +10,7 @@ OWNER_ID = 0  # Telegram user id of the bot owner
 
 # Optional
 AUTO_BYPASS = False
+CMD_SUFFIX = ""  # Suffix added to every command, e.g. "1" gives /bypass1
 LARAVEL_SESSION = ""
 XSRF_TOKEN = ""
 GDTOT_CRYPT = ""

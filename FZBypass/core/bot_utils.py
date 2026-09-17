@@ -1,9 +1,13 @@
 from wzgram.filters import create
 from wzgram.enums import MessageEntityType
-from re import search, match
+from re import search, match, escape
 from requests import get as rget
 from urllib.parse import urlparse, parse_qs
 from FZBypass import Config
+from FZBypass.core.commands import BotCommands
+
+BYPASS_CMDS = "|".join(escape(c) for c in BotCommands.BypassCommand)
+EXEC_CMDS = "|".join(escape(c) for c in BotCommands.ExecCommands)
 
 
 async def auth_topic(_, __, message):
@@ -28,7 +32,7 @@ async def auto_bypass(_, c, message):
     if (
         Config.AUTO_BYPASS
         and message.entities
-        and not match(r"^\/(bash|shell)($| )", message.text)
+        and not match(rf"^\/({EXEC_CMDS})($| )", message.text)
         and any(
             enty.type in [MessageEntityType.TEXT_LINK, MessageEntityType.URL]
             for enty in message.entities
@@ -38,8 +42,8 @@ async def auto_bypass(_, c, message):
     elif (
         not Config.AUTO_BYPASS
         and (txt := message.text)
-        and match(rf"^\/(bypass|bp)(@{c.me.username})?($| )", txt)
-        and not match(r"^\/(bash|shell)($| )", txt)
+        and match(rf"^\/({BYPASS_CMDS})(@{c.me.username})?($| )", txt)
+        and not match(rf"^\/({EXEC_CMDS})($| )", txt)
     ):
         return True
     return False

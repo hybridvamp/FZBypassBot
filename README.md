@@ -222,6 +222,7 @@
 - `AUTH_CHATS`: Group ID (with Topic ID), Separated by space.
   > **Format:** chat_id:topic_id chat_id chat_id:topic_id
 - `AUTO_BYPASS`: Change between Command Mode or Auto Bypass Mode. Default is False.
+- `CMD_SUFFIX`: Suffix added to every bot command, useful when running many bots in one chat. Example: `1` makes `/bypass` become `/bypass1`. Default is empty.
 - `GDTOT_CRYPT`: GdToT Crypt (Optional). It works with & without Crypt!
 - `HUBDRIVE_CRYPT`: HubDrive Crypt (Optional), It works with or without Cookie, Get from Cookie Editor Extension.
 - `KATDRIVE_CRYPT`: KatDrive Crypt (Optional), It works with or without Cookie, Get from Cookie Editor Extension.

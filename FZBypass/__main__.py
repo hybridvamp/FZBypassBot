@@ -1,4 +1,5 @@
 from FZBypass import Bypass, LOGGER, Config, conf
+from FZBypass.core.commands import BotCommands
 from wzgram import idle
 from wzgram.filters import command, user
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -31,7 +32,7 @@ def serve_health():
     ThreadingHTTPServer(("0.0.0.0", port), Health).serve_forever()
 
 
-@Bypass.on_message(command("restart") & user(Config.OWNER_ID))
+@Bypass.on_message(command(BotCommands.RestartCommand) & user(Config.OWNER_ID))
 async def restart(client, message):
     restart_message = await message.reply("<i>Restarting...</i>")
     await (await create_subprocess_exec("python3", "update.py")).wait()

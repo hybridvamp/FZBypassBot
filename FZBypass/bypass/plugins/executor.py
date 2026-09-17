@@ -8,9 +8,10 @@ from asyncio.subprocess import PIPE
 from asyncio import create_subprocess_shell
 from wzgram.filters import command, user
 from FZBypass import Config, Bypass, LOGGER
+from FZBypass.core.commands import BotCommands
 
 
-@Bypass.on_message(command("bash") & user(Config.OWNER_ID))
+@Bypass.on_message(command(BotCommands.BashCommand) & user(Config.OWNER_ID))
 async def bash(_, message):
     msg = await get_result(eval, message)
     if len(str(msg)) > 2000:
@@ -71,7 +72,7 @@ async def get_result(func, message):
             return result
 
 
-@Bypass.on_message(command("shell") & user(Config.OWNER_ID))
+@Bypass.on_message(command(BotCommands.ShellCommand) & user(Config.OWNER_ID))
 async def shell(_, message):
     cmd = message.text.split(maxsplit=1)
     if len(cmd) == 1:
