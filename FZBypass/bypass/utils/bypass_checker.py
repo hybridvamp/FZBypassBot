@@ -1,9 +1,9 @@
 from re import match
 from urllib.parse import urlparse
 
-from FZBypass.core.bypass_dlinks import *
-from FZBypass.core.bypass_ddl import *
-from FZBypass.core.bypass_scrape import *
+from FZBypass.bypass.utils.bypass_dlinks import *
+from FZBypass.bypass.utils.bypass_ddl import *
+from FZBypass.bypass.utils.bypass_scrape import *
 from FZBypass.core.bot_utils import get_dl
 from FZBypass.core.exceptions import DDLException
 
