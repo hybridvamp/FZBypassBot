@@ -5,7 +5,7 @@ from cloudscraper import create_scraper
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-from FZBypass.bypass.utils.bypass_ddl import transcript
+from FZBypass.bypass.ddl import transcript
 
 
 async def sharespark(url: str) -> str:

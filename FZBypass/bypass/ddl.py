@@ -12,7 +12,7 @@ from aiohttp import ClientSession
 
 from FZBypass import Config
 from FZBypass.core.exceptions import DDLException
-from FZBypass.core.recaptcha import recaptchaV3
+from FZBypass.bypass.recaptcha import recaptchaV3
 
 async def get_readable_time(seconds):
     minutes, seconds = divmod(seconds, 60)

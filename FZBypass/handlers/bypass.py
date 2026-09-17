@@ -11,7 +11,7 @@ from wzgram.enums import MessageEntityType
 from wzgram.errors import QueryIdInvalid
 
 from FZBypass import Config, Bypass
-from FZBypass.bypass.utils.bypass_checker import direct_link_checker, is_excep_link
+from FZBypass.bypass.checker import direct_link_checker, is_excep_link
 from FZBypass.core.bot_utils import AuthChatsTopics, convert_time, BypassFilter
 
 
