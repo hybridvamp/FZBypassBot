@@ -9,6 +9,7 @@ class _BotCommands:
         self.BypassCommand = [f"bypass{SUFFIX}", f"bp{SUFFIX}"]
         self.LogCommand = f"log{SUFFIX}"
         self.StatsCommand = f"stats{SUFFIX}"
+        self.HelpCommand = f"help{SUFFIX}"
         self.RestartCommand = f"restart{SUFFIX}"
         self.BashCommand = f"bash{SUFFIX}"
         self.ShellCommand = f"shell{SUFFIX}"
