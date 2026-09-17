@@ -46,6 +46,6 @@ Bypass = Client(
     api_id=Config.API_ID,
     api_hash=Config.API_HASH,
     bot_token=Config.BOT_TOKEN,
-    plugins=dict(root="FZBypass/plugins"),
+    plugins=dict(root="FZBypass/bypass/plugins"),
     parse_mode=ParseMode.HTML,
 )
